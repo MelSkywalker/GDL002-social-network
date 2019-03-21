@@ -1,10 +1,17 @@
 document.getElementById('send').addEventListener('click', register);
 function register () {
     // console.log('diste un click');
+    // let nombre = document.getElementById('name').value;
+    // let nick = document.getElementById('nickname').value;
     let correo = document.getElementById('email').value;
     let contraseña = document.getElementById('password').value;
 
-    firebase.auth().createUserWithEmailAndPassword(correo, contraseña).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(correo, contraseña)
+    // .then(function() {
+    //   let usuario = createUserWithEmailAndPassword(correo, contraseña) + nombre + nick;
+    //   console.log(usuario);
+    // })
+    .catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -15,7 +22,7 @@ function register () {
 
     // console.log(correo);
     // console.log(contraseña);  
-}
+};
 
 document.getElementById('logIn').addEventListener('click', access);
 function access () {
@@ -31,13 +38,13 @@ function access () {
         console.log(errorMessage);
         // ...
       });  
-}
+};
 
 function observer () {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           console.log('Existe usuario activo');
-        //   show();
+          show();
           // User is signed in.
           var displayName = user.displayName;
           var email = user.email;
@@ -54,10 +61,24 @@ function observer () {
           // ...
         }
       });
-}
+};
 observer();
 
 function show () {
     let contenido = document.getElementById('content');
-    contenido.innerHTML = 'Esto solo lo ven los usuarios registrados';
-}
+    contenido.innerHTML = `<h2>Bienvenido</h2>
+    <button id="close1">Cerrar sesión</button>`;
+};
+
+// document.getElementById('close1').addEventListener('click',close);
+// function close () {
+  
+// firebase.auth().signOut()
+// .then(function() {
+// // Sign-out successful.
+// console.log('Saliendo...')
+// })
+// .catch(function(error) {
+// // An error happened.
+// });
+// };

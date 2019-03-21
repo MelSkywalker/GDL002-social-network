@@ -23,17 +23,31 @@
 <body>
     <h1>Check Point Red Social Gamer</h1>
 
-    <h4>Registrate</h4>
-    <input id="email" type="email" placeholder="Ingresa tu e-mail/correo">
-    <input id="password" type="password" placeholder="Ingresa contraseña">
-    <button id="send">Enviar</button>
+    <form>
+      <h4>Registrate</h4>
+      <label for="name">Nombre:</label>
+      <input id="name" type="text" placeholder="Ingresa tu nombre"><br/>
+      <label for="nickname">¿Con que nombre quieres que te vean los demas usuarios?</label>
+      <input id="nickname" type="text" placeholder="Ingresa tu nickname"><br/>
+      <label for="email">¿Cuál es tu correo electrónico?</label>
+      <input id="email" type="email" placeholder="Ingresa tu e-mail/correo"><br/>
+      <label for="password">Ingresa una contraseña</label>
+      <input id="password" type="password" placeholder="Ingresa contraseña"><br/>
+      <button type="reset" id="send">Enviar</button>
+    </form>
 
-    <h4>Ingresa con tu cuenta existente</h4>
-    <input id="emailLog" type="email" placeholder="Ingresa tu e-mail/correo">
-    <input id="passwordLog" type="password" placeholder="Ingresa contraseña">
-    <button id="logIn">Entrar</button>
+    
+    <form>
+      <h4>Ingresa con tu cuenta existente</h4>
+      <input id="emailLog" type="email" placeholder="Ingresa tu e-mail/correo">
+      <input id="passwordLog" type="password" placeholder="Ingresa contraseña">
+      <button type="reset" id="logIn">Entrar</button>
+    </form>
+    
 
-    <div id="content"></div>
+    <div id="content">
+
+    </div>
 
 
 
