@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Check Point Red Social</title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+ <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDyLgS065H1XTNDOP-7WV4sKqXSnOsXewE",
+    authDomain: "redsocialusuarios.firebaseapp.com",
+    databaseURL: "https://redsocialusuarios.firebaseio.com",
+    projectId: "redsocialusuarios",
+    storageBucket: "redsocialusuarios.appspot.com",
+    messagingSenderId: "63565909344"
+  };
+  firebase.initializeApp(config);
+ </script>
+</head>
+<body>
+    <h1>Check Point Red Social Gamer</h1>
+
+    <h4>Registrate</h4>
+    <input id="email" type="email" placeholder="Ingresa tu e-mail/correo">
+    <input id="password" type="password" placeholder="Ingresa contraseña">
+    <button id="send">Enviar</button>
+
+    <h4>Ingresa con tu cuenta existente</h4>
+    <input id="emailLog" type="email" placeholder="Ingresa tu e-mail/correo">
+    <input id="passwordLog" type="password" placeholder="Ingresa contraseña">
+    <button id="logIn">Entrar</button>
+
+    <div id="content"></div>
+
+
+
+
+
+
+ <link rel="stylesheet" href="style.css">
+ <script src="main.js"></script>
+ 
+    
+</body>
+</html>
