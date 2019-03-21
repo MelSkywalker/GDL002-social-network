@@ -1,6 +1,6 @@
 //get data
 db.collection('posts').get().then(snapshot => {
-    console.log(snapshot.docs);
+    setupPosts(snapshot.docs)
 })
 
 //listen for auth status changes
