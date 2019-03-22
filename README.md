@@ -1,3 +1,129 @@
+#CHECK-POINT, gamernet para mujeres
+
+### Definición del producto
+
+Tomando el feminismo como punto de partida, rápidamente pensamos en una de las
+problemáticas más comunes en la red desde hace varios años, los ataques a
+las mujeres gamer.
+
+### Usuario
+La red aceptará usuarios de cualquier sexo a partir de 13 años (el estándar), pero estará dirigida a mujeres gamer que busquen mejorar su experiencia de juego en línea, multiplayer y comunidades. Por ejemplo, sentirse más seguras.
+Dato arrojado por las encuestas:
+-La mayoría de las mujeres que juegan, empezaron muy jóvenes (antes de los 12) y aún está por debajo de los 40.
+-Los ataques más comunes son la descalificación verbal por ser mujer y acoso sexual.
+-La mitad de las encuestadas evita jugar en línea (principalmente por disponibilidad de tiempo y por evitar la mala experiencia).
+
+
+
+En el `README.md` colocar cómo conociste el mercado de las redes sociales, cómo
+descubriste las necesidades de los usuarios, cómo llegaste  la definición final
+de tu producto. Si tienes fotos de entrevistas, cuestionarios y/o sketches
+(bocetos) compártelos. Es importante que detalles:
+
+* Cuáles son los elementos básicos que tiene una red social
+* Quiénes son los principales usuarios de producto
+* Cómo descubriste las necesidades de los usuarios
+* Qué problema resuelve el producto para estos usuarios
+* Cuáles son los objetivos de estos usuarios en relación con el producto
+* Cuáles son las principales funcionalidades del producto y cuál es su prioridad
+* Cómo verificaste que el producto les está resolviendo sus problemas
+* Cómo te asegurarás que estos usuarios usen este producto
+
+Para poder llegar a estas definiciones te recomendamos ver: entrevistas con
+usuarios y tests de usabilidad.
+
+### Historias de usuario
+
+1.- El usuario necesita una pantalla donde pueda registrarse o iniciar sesión
+para ingresar sus datos y validar la cuenta.
+
+  *D.O.D*
+  -El usuario puede crear una cuenta con un e-mail válido
+  -El usuario puede ingresar una contraseña y esta se muestra con caracteres ocultos
+  -No permite crear usuarios repetidos
+  -Se muestra un mensaje de error cuando el usuario información inválida
+  -El usuario puede registrar un nickname
+  -El usuario puede ingresar a su cuenta (muro de publicaciones e información de perfil)
+
+2.- El usuario necesita un muro o lista de publicaciones para interactuar con
+sus contactos y grupos de interés.
+
+  *D.O.D*
+  -El usuario puede crear una publicación, editarla y eliminarla
+  -El usuario puede definir si su publicación es pública o privada
+  -El usuario puede reaccionar a las publicaciones
+  -El usuario puede ver el contador de reacciones
+  -El usuario puede ver publicaciones recientes y pasadas
+  -El usuario puede comentar las publicaciones
+  -El usuario puede compartir las publicaciones
+
+3.- El usuario necesita tener un perfil con su información divida en dos
+secciones. La gamer-pública y la personal-privada para moderar la interacción
+con los otros usuarios.
+
+  *D.O.D*
+  -El usuario puede crear una cuenta con un e-mail válido
+  -El usuario puede ingresar una contraseña y esta se muestra con caracteres ocultos
+  -No permite crear usuarios repetidos
+  -Se muestra un mensaje de error cuando el usuario información inválida
+  -El usuario puede registrar un nickname
+  -El usuario puede ingresar a su cuenta (muro de publicaciones e información de perfil)
+
+### Diseño de la Interfaz de Usuario (prototipo de baja fidelidad)
+
+Debes definir cuál será el flujo que seguirá el usuario dentro de tu producto y
+con eso deberás diseñar la Interfaz de Usuario (UI por sus siglas en inglés) de
+esta red social que siga este flujo.
+Este diseño debe representar la solución que se implementará finalmente en
+código.
+
+Pantalla1
+
+![boceto_mobile_Pantalla01](https://drive.google.com/uc?export=view&id=1uCNplxCt1tXPhW9WbCUIW3XQKLar6Xy-)
+
+Pantalla2
+
+![boceto_mobile_Pantalla02](https://drive.google.com/uc?export=view&id=1JrfZu_LRtFSqdY-kICK3Z-8ESMcFs28-)
+
+Pantalla3
+
+![boceto_mobile_Pantalla03](https://drive.google.com/uc?export=view&id=1kWYP4xnJaPA3k4k5J_V5HjoPnbgtdngT)
+
+Pantalla4
+
+![boceto_mobile_Pantalla04](https://drive.google.com/uc?export=view&id=1s1pvUZpByFbPqaacyc6z1RByGmiAIBB4)
+
+Pantalla4.1
+
+![boceto_mobile_Pantalla04-1](https://drive.google.com/uc?export=view&id=1eBgie-m9b-xuBBfS0pLWh1wzzRLQX_Mp)
+
+Pantalla5
+
+![boceto_mobile_Pantalla05](https://drive.google.com/uc?export=view&id=1G3Y1MQYK5qw3WFsv2YXXn--vzW4786ct)
+
+### Prototipo de alta fidelidad
+
+Log-in
+
+![mobile_Pantalla01](https://drive.google.com/uc?export=view&id=1grOu79Sf_VQt237Cl1GIeZFnYog2H3qX)
+
+Registro
+
+![mobile_Pantalla02](https://drive.google.com/uc?export=view&id=1NfMIWbFwTdWKdQMM2iw6wZEeDUlLi2Ym)
+
+Muro
+
+![mobile_Pantalla03](https://drive.google.com/uc?export=view&id=1vAzSm3rGWSY84STsWpoGMDkcTqjQrj2A)
+
+Perfil
+
+![mobile_Pantalla04](https://drive.google.com/uc?export=view&id=1HlGdxfLjOhl3U2_KwhzUTiYJth_Lx4-t)
+
+Recomendaciones y novedades
+
+![mobile_Pantalla05](https://drive.google.com/uc?export=view&id=1sfMwHXsl4m_L3JHTlOmP72kmwZfH6-8b)
+
+
 # Creando una Red Social
 
 ## Preámbulo
