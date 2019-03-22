@@ -10,5 +10,6 @@ const setupPosts = (data) => {
         </li>
         `;
         html += li
-    })
+    });
+    posts.innerHTML = html;
 }
