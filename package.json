@@ -1,0 +1,32 @@
+{
+  "name": "GDL002-social-network",
+  "version": "1.0.0",
+  "description": "Tomando el feminismo y nuestra influencia tencnológica como punto de partida, consideramos un sector que sigue siendo discriminado, las mujeres en los videojuegos. Según estudios publicados por *THE GUARDIAN* en 2014, 52% de la población gamer eran mujeres (y es una cifra que sigue aumentando). Aún así generalmente quienes juegan en línea suelen ser hombres y nos preguntamos ¿por qué? La respuesta es la misma que encontramos en la mayoría, si es que en todos, los casos de exclusión femenina, las mujeres no son bienvenidas en el mundo gamer. Y no es nada nuevo, los ataques nacieron con los videojuegos y han crecido junto a la accesibilidad del internet y sus comunidades de juego, pero comenzaron a visibilizarse apenas hace unos años. Estos son más comunes en los juegos y comunidades en línea, los cuales van desde insultos sexistas, hasta la exclusión total o el acoso.",
+  "main": "src/index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "htmlhint": "htmlhint src/*.html test/*.html",
+    "eslint": "eslint --ext .js src/ test/",
+    "pretest": "npm run eslint && npm run htmlhint",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarenHippitaku/GDL002-social-network.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarenHippitaku/GDL002-social-network/issues"
+  },
+  "homepage": "https://github.com/KarenHippitaku/GDL002-social-network#readme",
+  "dependencies": {
+    "eslint": "^5.15.3",
+    "eslint-plugin-jest": "^22.4.1",
+    "htmlhint": "^0.11.0",
+    "jest": "^24.5.0"
+  }
+}
