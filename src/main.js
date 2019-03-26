@@ -6,11 +6,16 @@ window.addEventListener("load", () => {
   function observer() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
+        if(user.emailVerified) {
+          document.getElementById('content').style.display ='block';
+        }; 
         console.log('Existe usuario activo');
-        show();
+        
+        // show(user);
         // User is signed in.
         var displayName = user.displayName;
         var email = user.email;
+        console.log(user);
         var emailVerified = user.emailVerified;
         var photoURL = user.photoURL;
         var isAnonymous = user.isAnonymous;
@@ -27,19 +32,23 @@ window.addEventListener("load", () => {
   };
   observer();
 
-  function show(){
-    document.getElementById('content').style.display ='block';
-  }
+  // function show(user){
+  //   let user = (user);
+  //   if(user.emailVerified) {
+  //     document.getElementById('content').style.display ='block';
+  //   }; 
+  // };
 
   document.getElementById('send').addEventListener('click', ()=> {
-    // console.log('diste un click');
-
+    saveUserData();
     let correo = document.getElementById('email').value;
     let contraseña = document.getElementById('password').value;
 
     firebase.auth().createUserWithEmailAndPassword(correo, contraseña)
        .then(function() {
-      //   let usuario = createUserWithEmailAndPassword(correo, contraseña) + nombre + nick;
+        console.log('usuario agregado correctamente');
+         verify();
+      
         // let nombre = document.getElementById('name').value;
         // let nick = document.getElementById('nickname').value;
         // let datas = {
@@ -51,7 +60,6 @@ window.addEventListener("load", () => {
         // firebase.getCollectioName('users')(){
         //   firebase.savePost(datas)
         // }
-         console.log('usuario agregado correctamente');
        })
       .catch(function (error) {
         // Handle Errors here.
@@ -88,7 +96,42 @@ window.addEventListener("load", () => {
         // An error happened.
       });
     });
-    
+
+    function verify () {
+      var user = firebase.auth().currentUser;
+      user.sendEmailVerification()
+      .then(function() {
+     // Email sent.
+     console.log('Enviando correo...');
+     
+     })
+     .catch(function(error) {
+     // An error happened.
+      });
+     };
+
+    //  guardando informacion del usuario al momento de darle click al boton registrar
+     function saveUserData () {
+       let correo = document.getElementById('email').value;
+       let name = document.getElementById('name').value;
+       let nick = document.getElementById('nickname').value;
+       let date = document.getElementById('date').value;
+
+     // Initialize Cloud Firestore through Firebase
+     var db = firebase.firestore();
+     db.collection("users").add({
+     email: correo,
+     name: name,
+     nickname: nick,
+     birthdate: date
+     })
+     .then(function(docRef) {
+       console.log("Document written with ID: ", docRef.id);
+     })
+     .catch(function(error) {
+       console.error("Error adding document: ", error);
+     });
+};
 
 
 });//Fin del load del window

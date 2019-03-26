@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Check Point Red Social</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+
  <script>
   // Initialize Firebase
   var config = {
@@ -19,41 +23,43 @@
   };
   firebase.initializeApp(config);
  </script>
+
  <script src="main.js"></script>
+ <!-- <script src="main1.js"></script> -->
  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Check Point Red Social Gamer</h1>
+  <main>
+      <h1>Check Point Red Social Gamer</h1>
+      <nav>
+        <form>
+          <h4>Registrate</h4>
+          <label for="name">Nombre:</label>
+          <input id="name" type="text" placeholder="Ingresa tu nombre"><br/>
+          <label for="nickname">¿Con que nombre quieres que te vean los demas usuarios?</label>
+          <input id="nickname" type="text" placeholder="Ingresa tu nickname"><br/>
+          <label for="date">Fecha de naciemiento:</label>
+          <input id="date" type="text" placeholder="Fecha de naciemiento"><br/>
+          <label for="email">¿Cuál es tu correo electrónico?</label>
+          <input id="email" type="email" placeholder="Ingresa e-mail/correo"><br/>
+          <label for="password">Ingresa una contraseña</label>
+          <input id="password" type="password" placeholder="Ingresa contraseña"><br/>
+          <button type="reset" id="send">Registrar</button>
+        </form>
+        <form>
+          <h4>Ingresa con tu cuenta existente</h4>
+          <input id="emailLog" type="email" placeholder="Ingresa e-mail/correo">
+          <input id="passwordLog" type="password" placeholder="Ingresa contraseña">
+          <button type="reset" id="logIn">Entrar</button>
+        </form>
+      </nav>
 
-    <form>
-      <h4>Registrate</h4>
-      <label for="name">Nombre:</label>
-      <input id="name" type="text" placeholder="Ingresa tu nombre"><br/>
-      <label for="nickname">¿Con que nombre quieres que te vean los demas usuarios?</label>
-      <input id="nickname" type="text" placeholder="Ingresa tu nickname"><br/>
-      <label for="email">¿Cuál es tu correo electrónico?</label>
-      <input id="email" type="email" placeholder="Ingresa tu e-mail/correo"><br/>
-      <label for="password">Ingresa una contraseña</label>
-      <input id="password" type="password" placeholder="Ingresa contraseña"><br/>
-      <button type="reset" id="send">Enviar</button>
-    </form>
-
-    
-    <form>
-      <h4>Ingresa con tu cuenta existente</h4>
-      <input id="emailLog" type="email" placeholder="Ingresa tu e-mail/correo">
-      <input id="passwordLog" type="password" placeholder="Ingresa contraseña">
-      <button type="reset" id="logIn">Entrar</button>
-    </form>
-    
-
-    <div id="content" style="display:none">
-        <h2>Bienvenido</h2>
-        <button id="close1">Cerrar sesión</button>
-    </div>
-
-
- 
+      
+      <div id="content" style="display:none">
+          <h2>Bienvenido</h2>
+          <button id="close1">Cerrar sesión</button>
+      </div>
+  </main>
     
 </body>
 </html>
