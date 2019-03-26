@@ -110,13 +110,17 @@ Muro
 
 ![mobile_Pantalla03](https://drive.google.com/uc?export=view&id=1vAzSm3rGWSY84STsWpoGMDkcTqjQrj2A)
 
-Perfil
+Perfil público
 
 ![mobile_Pantalla04](https://drive.google.com/uc?export=view&id=1HlGdxfLjOhl3U2_KwhzUTiYJth_Lx4-t)
 
+Perfil privado
+
+![mobile_Pantalla04.1](https://drive.google.com/uc?export=view&id=1sfMwHXsl4m_L3JHTlOmP72kmwZfH6-8b)
+
 Recomendaciones y novedades
 
-![mobile_Pantalla05](https://drive.google.com/uc?export=view&id=1sfMwHXsl4m_L3JHTlOmP72kmwZfH6-8b)
+![mobile_Pantalla05](https://drive.google.com/uc?export=view&id=1-MsogdQjNl8eyRldwAD5MR2RgGG1X6Ao)
 
 
 # Creando una Red Social
