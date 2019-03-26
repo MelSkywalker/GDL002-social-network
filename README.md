@@ -1,36 +1,31 @@
-#CHECK-POINT, gamernet para mujeres
+# CHECK-POINT, la gamernet para mujeres
 
 ### Definición del producto
 
-Tomando el feminismo como punto de partida, rápidamente pensamos en una de las
-problemáticas más comunes en la red desde hace varios años, los ataques a
-las mujeres gamer.
+Tomando el feminismo y nuestra influencia tencnológica como punto de partida, consideramos un sector que sigue siendo discriminado, las mujeres en los videojuegos. Según estudios publicados por *THE GUARDIAN* en 2014, 52% de la población gamer eran mujeres (y es una cifra que sigue aumentando). Aún así generalmente quienes juegan en línea suelen ser hombres y nos preguntamos ¿por qué? La respuesta es la misma que encontramos en la mayoría, si es que en todos, los casos de exclusión femenina, las mujeres no son bienvenidas en el mundo gamer. Y no es nada nuevo, los ataques nacieron con los videojuegos y han crecido junto a la accesibilidad del internet y sus comunidades de juego, pero comenzaron a visibilizarse apenas hace unos años. Estos son más comunes en los juegos y comunidades en línea, los cuales van desde insultos sexistas, hasta la exclusión total o el acoso.
 
-### Usuario
-La red aceptará usuarios de cualquier sexo a partir de 13 años (el estándar), pero estará dirigida a mujeres gamer que busquen mejorar su experiencia de juego en línea, multiplayer y comunidades. Por ejemplo, sentirse más seguras.
-Dato arrojado por las encuestas:
--La mayoría de las mujeres que juegan, empezaron muy jóvenes (antes de los 12) y aún está por debajo de los 40.
--Los ataques más comunes son la descalificación verbal por ser mujer y acoso sexual.
--La mitad de las encuestadas evita jugar en línea (principalmente por disponibilidad de tiempo y por evitar la mala experiencia).
+Ya que no buscamos segregar, la red aceptará usuarios de cualquier sexo, a partir de 13 años (el estándar), pero estará dirigida a mujeres gamer. Implementando herramientas que busquen mejorar la convivencia de nuestros usuarios, como resaltar sus habilidades de juego, logros e intereses comunes y dejando en último plano información como el sexo o nacionalidad, lograremos minimizar las agresiones y ofrecer una mejor experiencia.
 
+Para tener más claro el problema, hicimos una investigación recopilando experiencias, algunas directas y otras a través de dos encuestas. La *encuesta #1* recopiló sólo información sobre mujeres gamer y la *encuesta #2*, información sobre gamers de cualquier sexo.
 
+Esto nos permitió recopilar datos de gran relevancia y definir con mayor claridad nuestro usuario al entender mejor sus necesidades.
 
-En el `README.md` colocar cómo conociste el mercado de las redes sociales, cómo
-descubriste las necesidades de los usuarios, cómo llegaste  la definición final
-de tu producto. Si tienes fotos de entrevistas, cuestionarios y/o sketches
-(bocetos) compártelos. Es importante que detalles:
+**Datos arrojados por la encuesta #1:**
 
-* Cuáles son los elementos básicos que tiene una red social
-* Quiénes son los principales usuarios de producto
-* Cómo descubriste las necesidades de los usuarios
-* Qué problema resuelve el producto para estos usuarios
-* Cuáles son los objetivos de estos usuarios en relación con el producto
-* Cuáles son las principales funcionalidades del producto y cuál es su prioridad
-* Cómo verificaste que el producto les está resolviendo sus problemas
-* Cómo te asegurarás que estos usuarios usen este producto
+- La mayoría de las mujeres que juegan, empezó muy joven (antes de los 12 años) y aún está por debajo de los 40.
+- Los ataques más comunes son la descalificación verbal por ser mujer y acoso sexual.
+- Casi 50% de las encuestadas evita jugar en línea, principalmente por disponibilidad de tiempo y por evitar las malas experiencias.
 
-Para poder llegar a estas definiciones te recomendamos ver: entrevistas con
-usuarios y tests de usabilidad.
+**Datos arrojados por la encuesta #2:**
+
+- La mayor parte de los jugadores online, son hombres (76%).
+- Proporcionalmente, la mayoría de los encuestados no ve un beneficio en poder ocultar o mantener privada parte de tu información (como el sexo o el país de origen).
+- Los usuarios gamer necesitan una sección de recomendaciones (juegos, eventos, contactos, etc.) que se ajuste a sus intereses.
+
+**Usuario**
+
+Mujeres gamer que busquen mejorar su experiencia de juego en línea, multiplayer y comunidades. Por ejemplo, sentirse más seguras y aceptadas.
+
 
 ### Historias de usuario
 
