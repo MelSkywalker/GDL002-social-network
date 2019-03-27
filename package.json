@@ -26,6 +26,7 @@
   "dependencies": {
     "eslint": "^5.15.3",
     "eslint-plugin-jest": "^22.4.1",
+    "firebase": "^5.9.1",
     "htmlhint": "^0.11.0",
     "jest": "^24.5.0"
   }
