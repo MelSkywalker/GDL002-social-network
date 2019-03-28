@@ -25,24 +25,13 @@ const renderPost = (doc) => {
         db.collection('posts').doc(id).delete();
     })
 
-    //updating post
-    // updatePost.add('click', (e) => {
-    //     e.preventDefault();
-    //     const oldElement = post;
-    //     const newElement = document.createElement('input');
-    //     newElement.type= 'text';
-    //     const updateButton = document.createElement('input');
-    //     updateButton.type = 'button';
-    //     oldElement.replaceWith(newElement);
-
-    // let id = e.target.parentElement.getAttribute('data-id');
-    // db.collection('posts').doc(id).update({
-    //     post: editPost
     updatePost.addEventListener('click', (e) => {
         const oldElement = post;
         const oldText = oldElement.textContent;
         const newElement = document.createElement('input');
         newElement.type = 'text';
+        li.appendChild(newElement);
+
         oldElement.replaceWith(newElement);
         newElement.value = oldText;
         const updateButton = document.createElement('button');
@@ -51,28 +40,19 @@ const renderPost = (doc) => {
 
         updateButton.addEventListener('click', (e) => {
             post.textContent = newElement.value;
+            newElement.replaceWith(oldElement);
             let id = e.target.parentElement.getAttribute('data-id');
-            db.collection('post').doc(id).update({
+            console.log('id', id);
+            e.stopPropagation();
+            e.preventDefault();
+            db.collection('posts').doc(id).update({
                 post: newElement.value
-            })
+            });
+            li.removeChild(updateButton);
         })
 
     })
 }
-
-//update posts
-const updateTest = () => {
-    const oldElement = document.querySelector('#spanTest');
-    const oldText = oldElement.textContent;
-    const newElement = document.createElement('input');
-    newElement.type = 'text';
-    oldElement.replaceWith(newElement);
-    newElement.value = oldText;
-}
-const formButton = document.getElementById('buttonTest');
-formButton.addEventListener('click', updateTest);
-
-
 
 //getting posts
 // db.collection('posts').get().then((snapshot) => {
