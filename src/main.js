@@ -5,12 +5,12 @@ const form = document.querySelector('#add-post');
 const renderPost = (doc) => {
     let li = document.createElement('li');
     let post = document.createElement('span');
-    let deletePost = document.createElement('div');
-    let updatePost = document.createElement('div');
+    let deletePost = document.createElement('button');
+    let updatePost = document.createElement('button');
 
     li.setAttribute('data-id', doc.id);
     post.textContent = doc.data().post;
-    deletePost.textContent = 'x';
+    deletePost.textContent = 'Eliminar';
     updatePost.textContent = 'Editar';
 
     li.appendChild(post);
@@ -26,16 +26,51 @@ const renderPost = (doc) => {
     })
 
     //updating post
-    updatePost.add('click', (e) => {
-        e.preventDefault();
-        let id = e.target.parentElement.getAttribute('data-id');
-        let editPost = post.outerHTML= '<input type="text"/>';
-        db.collection('posts').doc(id).update({
-            post: editPost
+    // updatePost.add('click', (e) => {
+    //     e.preventDefault();
+    //     const oldElement = post;
+    //     const newElement = document.createElement('input');
+    //     newElement.type= 'text';
+    //     const updateButton = document.createElement('input');
+    //     updateButton.type = 'button';
+    //     oldElement.replaceWith(newElement);
+
+    // let id = e.target.parentElement.getAttribute('data-id');
+    // db.collection('posts').doc(id).update({
+    //     post: editPost
+    updatePost.addEventListener('click', (e) => {
+        const oldElement = post;
+        const oldText = oldElement.textContent;
+        const newElement = document.createElement('input');
+        newElement.type = 'text';
+        oldElement.replaceWith(newElement);
+        newElement.value = oldText;
+        const updateButton = document.createElement('button');
+        updateButton.textContent = 'Actualizar';
+        li.appendChild(updateButton);
+
+        updateButton.addEventListener('click', (e) => {
+            post.textContent = newElement.value;
+            let id = e.target.parentElement.getAttribute('data-id');
+            db.collection('post').doc(id).update({
+                post: newElement.value
+            })
         })
+
     })
 }
 
+//update posts
+const updateTest = () => {
+    const oldElement = document.querySelector('#spanTest');
+    const oldText = oldElement.textContent;
+    const newElement = document.createElement('input');
+    newElement.type = 'text';
+    oldElement.replaceWith(newElement);
+    newElement.value = oldText;
+}
+const formButton = document.getElementById('buttonTest');
+formButton.addEventListener('click', updateTest);
 
 
 
