@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 20px; /* 1rem will equal this now */
+  line-height: 1.6;
+  font-family: sans-serif; /* add google fonts */
+}
+/* General atributes for each page */
+.page {
+  display: none;
+  width: 100%;
+  min-height: 100%; /*Allow for the content offthe bottom of the page*/
+  position: fixed; /*Or absolute ifthe user needs to scrollfor more content*/
+  padding: 1rem 2rem;
+}
+.active {
+  display: block;
+}
