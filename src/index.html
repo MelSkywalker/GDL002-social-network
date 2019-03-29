@@ -5,34 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css">
   <title>Check-Point!</title>
 </head>
-<!-- Navigation bar -->
 
 <body>
-  <nav>
-    <div class="nav-wrapper-container">
-      <ul id="nav-mobile">
-        <li class="logged-in">
-          <a href="#" data-target="modal-account">Cuenta</a>
-        </li>
-        <li class="logged-in">
-          <a href="#" id="logout">Cerrar sesión</a>
-        </li>
-        <li class="logged-in">
-          <a href="#" data-target="newsfeed">Inicio</a>
-        </li>
-        <li class="logged-out">
-          <a href="#" data-target="modal-login">Iniciar sesión</a>
-        </li>
-        <li class="logged-out">
-          <a href="#" data-target="modal-sign-up">Registro</a>
-        </li>
-      </ul>
-    </div>
+
 
     <!-- Sign up modal -->
     <div id="modal-sign-up" class="modal">
+      <img class="logo singup-logo" alt="Checkpoint_logo.png"
+      src="https://drive.google.com/uc?export=view&id=1qZHg6D3qFRG7D16LuBLyIx2uvb6sHvgY">
       <div class="modal-content">
         <h2>Sign up</h2>
         <form id="signup-form">
@@ -44,13 +27,15 @@
             <input type="password" id="signup-password" required>
             <label for="signup-password">Contraseña</label>
           </div>
-          <input type="submit" value="Registrar">
+          <input class="blackBtn enterBtn" type="submit" value="Registrar">
         </form>
       </div>
     </div>
 
     <!-- Login modal -->
     <div id="modal-login" class="modal">
+      <img class="logo login-logo" alt="Checkpoint_logo.png"
+      src="https://drive.google.com/uc?export=view&id=1qZHg6D3qFRG7D16LuBLyIx2uvb6sHvgY">
       <div class="modal-content">
         <h2>Log In</h2>
         <form id="login-form">
@@ -62,10 +47,35 @@
             <input type="password" id="login-password" required>
             <label for="login-password">Contraseña</label>
           </div>
-          <input type="submit" value="Inciar sesión">
+          <input class="blackBtn enterBtn" type="submit" value="Inciar sesión">
         </form>
       </div>
     </div>
+
+    <!-- Navigation bar -->
+    <nav>
+      <div class="nav-wrapper-container">
+        <ul id="nav-mobile">
+          <!-- navigation logo -->
+          <li><img class="logo nav-logo" alt="Check-point_logo.png"
+          src="https://drive.google.com/uc?export=view&id=1p79-A_uABKO4CS9Rl_pd1ccLYOdmtcCg"></li>
+          <li class="logged-in">
+            <a href="#" data-target="modal-account">Cuenta</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" id="logout">Cerrar sesión</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" data-target="newsfeed">Inicio</a>
+          </li>
+          <li class="logged-out">
+            <a href="#" data-target="modal-login">Iniciar sesión</a>
+          </li>
+          <li class="logged-out">
+            <a href="#" data-target="modal-sign-up">Registro</a>
+          </li>
+        </ul>
+      </div>
 
     <!-- Modal account -->
     <div id="modal-account" class="modal">
@@ -78,6 +88,12 @@
     <!-- Newsfeed -->
     <div class="container">
       <ul class="posts">
+        <button class="like likeBtn" id="loveItBtn"><img class="imgBtn" alt="loveItBtn"
+          src="https://drive.google.com/uc?export=view&id=1URPQIxmr9NDjhTLkBDPNcEidLJ1eYzeQ"></button>
+        <button class="like likeBtn" id="lvlUpBtn"><img class="imgBtn" alt="lvlUpBtn"
+          src="https://drive.google.com/uc?export=view&id=1TjbIbQmgxoy15DSwcvq-NKL-Jh4zw_aR"></button>
+        <button class="like likeBtn" id="gameOverBtn"><img class="imgBtn" alt="gameOverBtn"
+          src="https://drive.google.com/uc?export=view&id=13S3-ICqv2NZk_0xgqbYYXDskUCjAPday"></button>
 
       </ul>
     </div>
