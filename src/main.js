@@ -3,19 +3,29 @@ const form = document.querySelector('#add-post');
 
 //create element and render them
 const renderPost = (doc) => {
+    // console.log('render post');
+    // console.log(doc);
+
     let li = document.createElement('li');
     let post = document.createElement('span');
     let deletePost = document.createElement('button');
     let updatePost = document.createElement('button');
+    let nLikes = document.createElement('span');
+    let likePost = document.createElement('button');
 
     li.setAttribute('data-id', doc.id);
     post.textContent = doc.data().post;
     deletePost.textContent = 'Eliminar';
     updatePost.textContent = 'Editar';
+    likePost.textContent = 'Like';
 
+    let getLikes = doc.data().likes;
+    nLikes.textContent = getLikes;
     li.appendChild(post);
     li.appendChild(updatePost);
     li.appendChild(deletePost);
+    li.appendChild(nLikes);
+    li.appendChild(likePost);
     postList.appendChild(li);
 
     //deleting post
@@ -34,39 +44,39 @@ const renderPost = (doc) => {
 
         oldElement.replaceWith(newElement);
         newElement.value = oldText;
-        const updateButton = document.createElement('button');
-        updateButton.textContent = 'Actualizar';
-        li.appendChild(updateButton);
+        updatePost.textContent = 'Guardar';
 
-        updateButton.addEventListener('click', (e) => {
-            post.textContent = newElement.value;
-            newElement.replaceWith(oldElement);
+        updatePost.addEventListener('click', (e) => {
             let id = e.target.parentElement.getAttribute('data-id');
-            console.log('id', id);
             e.stopPropagation();
-            e.preventDefault();
             db.collection('posts').doc(id).update({
                 post: newElement.value
             });
-            li.removeChild(updateButton);
+            updatePost.textContent = 'Editar';
         })
+    })
 
+    //Update number of likes
+    likePost.addEventListener('click', (e) => {
+        let id = e.target.parentElement.getAttribute('data-id');
+        let getPost = db.collection('posts').doc(id);
+        getPost.get().then(function (doc) {
+            let currentLikes = doc.data().likes;
+            currentLikes += 1;
+            getPost.update({
+                likes: currentLikes
+            })
+            nLikes.textContent = currentLikes;
+        })
     })
 }
-
-//getting posts
-// db.collection('posts').get().then((snapshot) => {
-//     snapshot.docs.forEach(doc => {
-//         renderPost(doc);
-//         // console.log(doc.data());
-//     })
-// })
 
 //saving posts
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     db.collection('posts').add({
-        post: form.post.value
+        post: form.post.value,
+        likes: 0
     })
     form.post.value = '';
 })
@@ -81,6 +91,10 @@ db.collection('posts').onSnapshot(snapshot => {
         } else if (change.type === 'removed') {
             let li = postList.querySelector('[data-id=' + change.doc.id + ']');
             postList.removeChild(li);
+        } else if (change.type === 'modified') {
+            let li = postList.querySelector('[data-id=' + change.doc.id + ']');
+            postList.removeChild(li);
+            renderPost(change.doc);
         }
     })
 })
