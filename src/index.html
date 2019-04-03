@@ -1,79 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Check Point Red Social</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script> -->
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
-
- <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDyLgS065H1XTNDOP-7WV4sKqXSnOsXewE",
-    authDomain: "redsocialusuarios.firebaseapp.com",
-    databaseURL: "https://redsocialusuarios.firebaseio.com",
-    projectId: "redsocialusuarios",
-    storageBucket: "redsocialusuarios.appspot.com",
-    messagingSenderId: "63565909344"
-  };
-  firebase.initializeApp(config);
- </script>
-
- <script src="main.js"></script>
- <!-- <script src="main1.js"></script> -->
- <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main>
-      <h1>Check Point Red Social Gamer</h1>
-      <nav>
-        <form>
-          <h4>Registrate</h4>
-          <label for="name">Nombre:</label>
-          <input id="name" type="text" placeholder="Ingresa tu nombre"><br/>
-          <label for="nickname">¿Con que nombre quieres que te vean los demas usuarios?</label>
-          <input id="nickname" type="text" placeholder="Ingresa tu nickname"><br/>
-          <label for="date">Fecha de naciemiento:</label>
-          <input id="date" type="text" placeholder="Fecha de naciemiento"><br/>
-          <label for="email">¿Cuál es tu correo electrónico?</label>
-          <input id="email" type="email" placeholder="Ingresa e-mail/correo"><br/>
-          <label for="password">Ingresa una contraseña</label>
-          <input id="password" type="password" placeholder="Ingresa contraseña"><br/>
-          <button type="reset" id="send">Registrar</button>
-        </form>
-        <form>
-          <h4>Ingresa con tu cuenta existente</h4>
-          <input id="emailLog" type="email" placeholder="Ingresa e-mail/correo">
-          <input id="passwordLog" type="password" placeholder="Ingresa contraseña">
-          <button type="reset" id="logIn">Entrar</button>
-        </form>
-      </nav>
-
-      
-      <div id="content" style="display:none">
-          <h2>Bienvenido</h2>
-          <button id="close1">Cerrar sesión</button>
-      </div>
-  </main>
-    
-</body>
-</html>
-
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Check-Point!</title>
+  <title>Check Point Red Social</title>
+
+  <!-- Estilo de boostrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+
+  <!-- Libreria firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+
+  <!-- Configuracion de firebase -->
+  <script src="firebase.js"></script>
+
+  <script src="main.js"></script>
+  <!-- <script src="main1.js"></script> -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<!-- Navigation bar -->
 
 <body>
+  <main>
+    <h1>Check Point Red Social Gamer</h1>
+    <nav>
+      <form id="formRegister">
+        <h4>Registrate</h4>
+        <label for="name">Nombre:</label>
+        <input id="name" required type="text" placeholder="Ingresa tu nombre"><br />
+        <label for="nickname">¿Con que nombre quieres que te vean los demas usuarios?</label>
+        <input id="nickname" required type="text" placeholder="Ingresa tu nickname"><br />
+        <label for="date">¿Cuál es tu año de naciemiento?:</label>
+        <input id="date" required type="text" placeholder="Año de naciemiento"><br />
+        <label for="email">¿Cuál es tu correo electrónico?</label>
+        <input id="email" required type="email" placeholder="Ingresa e-mail/correo"><br />
+        <label for="password">Ingresa una contraseña</label>
+        <input id="password" required type="password" placeholder="Ingresa contraseña"><br />
+        <button id="send">Registrar</button>
+
+        <!-- <div id="errores" style="display:none;">
+          <p></p>
+        </div> -->
+        
+      </form>
+      <form>
+        <h4>Ingresa con tu cuenta existente</h4>
+        <input id="emailLog" type="email" placeholder="Ingresa e-mail/correo">
+        <input id="passwordLog" type="password" placeholder="Ingresa contraseña">
+        <button type="reset" id="logIn">Entrar</button>
+      </form>
+    </nav>
+
+
+    <div id="content" style="display:none">
+      <h2>Bienvenido</h2>
+      <button id="close1">Cerrar sesión</button>
+    </div>
+  </main>
+
+</body>
+
+</html>
+
+
+<!-- <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Check-Point!</title>
+</head> -->
+<!-- Navigation bar -->
+
+<!-- <body>
   <nav>
     <div class="nav-wrapper-container">
       <ul id="nav-mobile">
@@ -93,10 +96,10 @@
           <a href="#" data-target="modal-sign-up">Registro</a>
         </li>
       </ul>
-    </div>
+    </div> -->
 
-    <!-- Sign up modal -->
-    <div id="modal-sign-up" class="modal">
+<!-- Sign up modal -->
+<!-- <div id="modal-sign-up" class="modal">
       <div class="modal-content">
         <h2>Sign up</h2>
         <form id="signup-form">
@@ -111,10 +114,10 @@
           <input type="submit" value="Registrar">
         </form>
       </div>
-    </div>
+    </div> -->
 
-    <!-- Login modal -->
-    <div id="modal-login" class="modal">
+<!-- Login modal -->
+<!-- <div id="modal-login" class="modal">
       <div class="modal-content">
         <h2>Log In</h2>
         <form id="login-form">
@@ -129,23 +132,23 @@
           <input type="submit" value="Inciar sesión">
         </form>
       </div>
-    </div>
+    </div> -->
 
-    <!-- Modal account -->
-    <div id="modal-account" class="modal">
+<!-- Modal account -->
+<!-- <div id="modal-account" class="modal">
       <div class="modal-content">
         <h2>Detalles de la cuenta</h2>
         <div class="account-details"></div>
       </div>
-    </div>
+    </div> -->
 
-    <!-- Newsfeed -->
-    <div class="container">
+<!-- Newsfeed -->
+<!-- <div class="container">
       <ul class="posts">
 
       </ul>
-    </div>
-    <!-- <div id="modal-newsfeed" class="modal">
+    </div> -->
+<!-- <div id="modal-newsfeed" class="modal">
       <div class="modal-content">
         <form id="create-post">
           <div class="input-field">
@@ -158,7 +161,7 @@
     </div> -->
 
 
-    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
     <script>
@@ -179,4 +182,4 @@
     <script src="auth.js"></script>
 </body>
 
-</html>
+</html> -->
