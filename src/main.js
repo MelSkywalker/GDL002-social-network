@@ -1,11 +1,9 @@
 const postList = document.querySelector('#posts-list');
 const form = document.querySelector('#add-post');
 
+
 //create element and render them
 const renderPost = (doc) => {
-    // console.log('render post');
-    // console.log(doc);
-
     let li = document.createElement('li');
     let post = document.createElement('span');
     let deletePost = document.createElement('button');
@@ -76,7 +74,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     db.collection('posts').add({
         post: form.post.value,
-        likes: 0
+        likes: 0,
     })
     form.post.value = '';
 })
