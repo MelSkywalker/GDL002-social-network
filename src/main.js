@@ -1,214 +1,119 @@
-const postList = document.querySelector('#posts-list');
-const form = document.querySelector('#add-post');
+'use strict'
+//Despues de que termino de cargar el html entonces entro al load del window.
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    if (user.emailVerified) {
+      document.getElementById('content').style.display = 'block';
+    }
+    // show(user);
+    // User is signed in.
+    // var displayName = user.displayName;
+    // var email = user.email;
+    //console.log(user);
+    // var emailVerified = user.emailVerified;
+    // var photoURL = user.photoURL;
+    // var isAnonymous = user.isAnonymous;
+    // var uid = user.uid;
+    // var providerData = user.providerData;
+    // ...
+    console.log('Existe usuario activo');
+  } else {
+    // User is signed out.
+    console.log('No existe usuario activo');
+    // ...
+  }
+});
 
+window.addEventListener("load", () => {
 
-//create element and render them
-const renderPost = (doc) => {
-    let li = document.createElement('li');
-    let post = document.createElement('span');
-    let deletePost = document.createElement('button');
-    let updatePost = document.createElement('button');
-    let nLikes = document.createElement('span');
-    let likePost = document.createElement('button');
+  // function show(user){
+  //   let user = (user);
+  //   if(user.emailVerified) {
+  //     document.getElementById('content').style.display ='block';
+  //   };
+  // };
 
-    li.setAttribute('data-id', doc.id);
-    post.textContent = doc.data().post;
-    deletePost.textContent = 'Eliminar';
-    updatePost.textContent = 'Editar';
-    likePost.textContent = 'Like';
-
-    let getLikes = doc.data().likes;
-    nLikes.textContent = getLikes;
-    li.appendChild(post);
-    li.appendChild(updatePost);
-    li.appendChild(deletePost);
-    li.appendChild(nLikes);
-    li.appendChild(likePost);
-    postList.appendChild(li);
-
-    //deleting post
-    deletePost.addEventListener('click', (e) => {
-        e.stopPropagation();
-        let id = e.target.parentElement.getAttribute('data-id');
-        db.collection('posts').doc(id).delete();
-    })
-
-    updatePost.addEventListener('click', (e) => {
-        const oldElement = post;
-        const oldText = oldElement.textContent;
-        const newElement = document.createElement('input');
-        newElement.type = 'text';
-        li.appendChild(newElement);
-
-        oldElement.replaceWith(newElement);
-        newElement.value = oldText;
-        updatePost.textContent = 'Guardar';
-
-        updatePost.addEventListener('click', (e) => {
-            let id = e.target.parentElement.getAttribute('data-id');
-            e.stopPropagation();
-            db.collection('posts').doc(id).update({
-                post: newElement.value
-            });
-            updatePost.textContent = 'Editar';
-        })
-    })
-
-    //Update number of likes
-    likePost.addEventListener('click', (e) => {
-        let id = e.target.parentElement.getAttribute('data-id');
-        let getPost = db.collection('posts').doc(id);
-        getPost.get().then(function (doc) {
-            let currentLikes = doc.data().likes;
-            currentLikes += 1;
-            getPost.update({
-                likes: currentLikes
-            })
-            nLikes.textContent = currentLikes;
-        })
-    })
-}
-
-//saving posts
-form.addEventListener('submit', (e) => {
+  // Registra usuarios en base firebase por correo y contraseña.
+  document.getElementById('send').addEventListener('click', (e) => {
     e.preventDefault();
-    db.collection('posts').add({
-        post: form.post.value,
-        likes: 0,
-    })
-    form.post.value = '';
+    // saveUserData(); //Guarda los demas datos del usuario en otra base por separado.
+
+    let correo = document.getElementById('email').value;
+    let contraseña = document.getElementById('password').value;
+
+
+    firebase.auth().createUserWithEmailAndPassword(correo, contraseña).then(cred => {
+      let db = firebase.firestore();
+      db.collection('users').doc(cred.uid).set({
+        name: document.getElementById('name').value,
+        nick: document.getElementById('nickname').value,
+        date: document.getElementById('date').value
+      }).then(function () {
+        verify(); //manda correo de verificacion.
+        console.log('usuario agregado correctamente');
+      }).then(post => {
+        db.collection('users').doc(cred.uid).collection("posts").add({
+          post: "Hola, esta es una publicación de prueba.",
+          likes: 0
+        })
+          .catch(function (error1) {
+            console.log(error1);
+          });
+      }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
+    });
+
+    document.getElementById('logIn').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('diste un click');
+      let correoLog = document.getElementById('emailLog').value;
+      let passwordLog = document.getElementById('passwordLog').value;
+
+      firebase.auth().signInWithEmailAndPassword(correoLog, passwordLog)
+        .catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+        });
+    });
+
+
+    document.getElementById("close1").addEventListener('click', () => {
+      e.preventDefault();
+      firebase.auth().signOut()
+        .then(function () {
+          // Sign-out successful.
+          console.log('Saliendo...')
+          document.getElementById('content').style.display = 'none';
+        })
+        .catch(function (error) {
+          // An error happened.
+        });
+    });
+
+    function verify() {
+      var user = firebase.auth().currentUser;
+
+      user.sendEmailVerification()
+        .then(function () {
+          // Email sent.
+          console.log('Enviando correo...');
+          alert('email enviado');
+          firebase.auth().signOut();
+          document.getElementById('formRegister').reset();
+        })
+        .catch(function (error) {
+          // An error happened.
+        });
+    };
+
+  });//Fin del load del window
+
 })
-
-
-//real-time listener
-db.collection('posts').onSnapshot(snapshot => {
-    let changes = snapshot.docChanges();
-    changes.forEach(change => {
-        if (change.type === 'added') {
-            renderPost(change.doc)
-        } else if (change.type === 'removed') {
-            let li = postList.querySelector('[data-id=' + change.doc.id + ']');
-            postList.removeChild(li);
-        } else if (change.type === 'modified') {
-            let li = postList.querySelector('[data-id=' + change.doc.id + ']');
-            postList.removeChild(li);
-            renderPost(change.doc);
-        }
-    })
-})
-
-
-// 'use strict'
-// //Despues de que termino de cargar eñ html entonces entro al load del window
-
-// window.addEventListener("load", () => {
-
-//   function observer() {
-//     firebase.auth().onAuthStateChanged(function (user) {
-//       if (user) {
-//         console.log('Existe usuario activo');
-//         show();
-//         // User is signed in.
-//         var displayName = user.displayName;
-//         var email = user.email;
-//         var emailVerified = user.emailVerified;
-//         var photoURL = user.photoURL;
-//         var isAnonymous = user.isAnonymous;
-//         var uid = user.uid;
-//         var providerData = user.providerData;
-//         // ...
-//       } else {
-//         // User is signed out.
-//         console.log('No existe usuario activo');
-//         // ...
-//       }
-//     });
-//   };
-//   observer();
-
-//   function show(){
-//     document.getElementById('content').style.display ='block';
-//   }
-
-//   document.getElementById('send').addEventListener('click', ()=> {
-//     // console.log('diste un click');
-
-//     let correo = document.getElementById('email').value;
-//     let contraseña = document.getElementById('password').value;
-
-//     firebase.auth().createUserWithEmailAndPassword(correo, contraseña)
-//        .then(function() {
-//       //   let usuario = createUserWithEmailAndPassword(correo, contraseña) + nombre + nick;
-//         // let nombre = document.getElementById('name').value;
-//         // let nick = document.getElementById('nickname').value;
-//         // let datas = {
-//         //   'email': correo,
-//         //   'name': nombre,
-//         //   'nick': nick,
-//         //   'photo': 'url'
-//         // }
-//         // firebase.getCollectioName('users')(){
-//         //   firebase.savePost(datas)
-//         // }
-//          console.log('usuario agregado correctamente');
-//        })
-//       .catch(function (error) {
-//         // Handle Errors here.
-//         var errorCode = error.code;
-//         var errorMessage = error.message;
-//         console.log(errorCode);
-//         console.log(errorMessage);
-//       });
-//   });
-
-//   document.getElementById('logIn').addEventListener('click', ()=> {
-//     console.log('diste un click');
-//     let correoLog = document.getElementById('emailLog').value;
-//     let passwordLog = document.getElementById('passwordLog').value;
-
-//     firebase.auth().signInWithEmailAndPassword(correoLog, passwordLog).catch(function (error) {
-//       // Handle Errors here.
-//       var errorCode = error.code;
-//       var errorMessage = error.message;
-//       console.log(errorCode);
-//       console.log(errorMessage);
-//     });
-//   });
-
-//     document.getElementById("close1").addEventListener('click', ()=>{
-//       firebase.auth().signOut()
-//       .then(function () {
-//         // Sign-out successful.
-//         console.log('Saliendo...')
-//         document.getElementById('content').style.display ='none';
-//       })
-//       .catch(function (error) {
-//         // An error happened.
-//       });
-//     });
-
-
-// });//Fin del load del window
-
-// const posts = document.querySelector('posts');
-// //setup posts
-// const setupPosts = (data) => {
-//     let html = '';
-//     data.forEach(doc => {
-//         const post = doc.data();
-//         const li = `
-//         <li>
-//             <div class = 'collabsible post'>${post.content}</div>
-//         </li>
-//         `;
-//         html += li
-//     });
-//     posts.innerHTML = html;
-// }
-// let database = firebase.database();
-// let posts = database.ref('posts');
-
-// let data = {
-//   text: "first post"
-// }
-// posts.push(data);
