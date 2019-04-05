@@ -45,9 +45,7 @@ const renderPost = (doc) => {
     const hour = date.getHours();
     const formattedDate = hour + ':' + getMinutesF() + 'hrs' + ' - ' + getDay() + '/' + getMonthF() + '/' + year + ' ';
 
-    // const name = doc.data().name;
-    // console.log(name);
-
+    // const name = doc.
     namePost.textContent = name;
     datePost.textContent = formattedDate;
     post.textContent = doc.data().post;
@@ -113,10 +111,8 @@ form.addEventListener('submit', (e) => {
     db.collection('users').doc(firebase.auth().currentUser.uid).collection('posts').add({
         post: form.post.value,
         likes: 0,
-        date: new Date().toJSON(),
-        // name : db.collection('users').doc(firebase.auth().currentUser.uid).nick
+        date: new Date().toJSON()
     })
-    console.log(db.collection('users').doc(firebase.auth().currentUser.uid));
 
     form.post.value = '';
 });
@@ -140,5 +136,17 @@ firebase.auth().onAuthStateChanged(user => {
                 }
             });
         })
+        // document.getElementById("close1").addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     firebase.auth().signOut()
+        //       .then(function () {
+        //         // Sign-out successful.
+        //         console.log('Saliendo...')
+        //         document.getElementById('content').style.display = 'none';
+        //       })
+        //       .catch(function (error) {
+        //         // An error happened.
+        //       });
+        //   });
     }
 })

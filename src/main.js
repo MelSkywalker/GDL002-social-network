@@ -54,7 +54,8 @@ window.addEventListener("load", () => {
       }).then(post => {
         db.collection('users').doc(cred.uid).collection("posts").add({
           post: "Hola, esta es una publicación de prueba.",
-          likes: 0
+          likes: 0,
+          date: new Date().toJSON()
         })
           .catch(function (error1) {
             console.log(error1);
@@ -85,7 +86,7 @@ window.addEventListener("load", () => {
     });
 
 
-    document.getElementById("close1").addEventListener('click', () => {
+    document.getElementById("close1").addEventListener('click', (e) => {
       e.preventDefault();
       firebase.auth().signOut()
         .then(function () {
