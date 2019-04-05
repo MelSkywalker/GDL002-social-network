@@ -10,8 +10,9 @@
 
 <body>
   <main>
-    <h1>Check Point Red Social Gamer</h1>
-    <nav>
+    <section id="ifNewUserRegister" class="page active">
+      <h1>Check Point Red Social Gamer</h1>
+
       <form id="formRegister">
         <h4>Registrate</h4>
         <label for="name">Nombre:</label>
@@ -25,51 +26,55 @@
         <label for="password">Ingresa una contraseña</label>
         <input id="password" required type="password" placeholder="Ingresa contraseña"><br />
         <button id="send">Registrar</button>
+        <a href="#ifAcountLogIn">Ya tengo una cuenta</a>
 
         <!-- <div id="errores" style="display:none;">
           <p></p>
         </div> -->
-        
+    </section>
+    <section id="ifAcountLogIn" class="page">
       </form>
       <form id="logInForm">
         <h4>Ingresa con tu cuenta existente</h4>
         <input id="emailLog" type="email" placeholder="Ingresa e-mail/correo">
         <input id="passwordLog" type="password" placeholder="Ingresa contraseña">
-        <button id="logIn">Entrar</button>
+        <a href="#wallContent"><button id="logIn">Entrar</button></a>
+        <a href="#ifNewUserRegister">Aún no tengo cuenta</a>
       </form>
-    </nav>
+    </section>
+    <section id="wallContent" class="page">
+      <div id="content" style="display:none">
+        <h2>Bienvenido</h2>
+        <button id="close1">Cerrar sesión</button>
+        <div class='postsContainer'>
+          <form id="addPost">
+            <input type="text" name="post" placeholder="¿Qué quieres compartir?">
+            <button>Publicar</button>
+          </form>
+          <ul id="postList"></ul>
+        </div>
+      </div>
+    </section>
 
-
-    <div id="content" style="display:none">
-      <h2>Bienvenido</h2>
-      <button id="close1">Cerrar sesión</button>
-      <div class='postsContainer'>
-        <form id="addPost">
-          <input type="text" name="post" placeholder="¿Qué quieres compartir?">
-          <button>Publicar</button>
-        </form>
-        <ul id="postList"></ul>
-      </div> 
-    </div>
-   
   </main>
 
 
-    <!-- Estilo de boostrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  <!-- Estilo de boostrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script> -->
   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>
   <!-- Libreria firebase -->
   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
 
   <!-- Configuracion de firebase -->
   <script src="firebase.js"></script>
-  
+
   <script src="main.js"></script>
   <script src="posts.js"></script>
+  <script src="singlepage.js"></script>
   <!-- <script src="main1.js"></script> -->
   <link rel="stylesheet" href="style.css">
 </body>

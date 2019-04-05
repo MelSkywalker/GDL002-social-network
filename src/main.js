@@ -9,7 +9,7 @@ firebase.auth().onAuthStateChanged(user => {
     // User is signed in.
     // var displayName = user.displayName;
     // var email = user.email;
-    //console.log(user);
+    console.log(user);
     // var emailVerified = user.emailVerified;
     // var photoURL = user.photoURL;
     // var isAnonymous = user.isAnonymous;
