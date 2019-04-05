@@ -20,7 +20,7 @@ firebase.auth().onAuthStateChanged(user => {
   } else {
     // User is signed out.
     console.log('No existe usuario activo');
-    // ... 
+    // ...
   }
 });
 
@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
   //   let user = (user);
   //   if(user.emailVerified) {
   //     document.getElementById('content').style.display ='block';
-  //   }; 
+  //   };
   // };
 
   // Registra usuarios en base firebase por correo y contraseña.
@@ -54,7 +54,8 @@ window.addEventListener("load", () => {
       }).then(post => {
         db.collection('users').doc(cred.uid).collection("posts").add({
           post: "Hola, esta es una publicación de prueba.",
-          likes: 0
+          likes: 0,
+          date: new Date().toJSON()
         })
           .catch(function (error1) {
             console.log(error1);
@@ -65,15 +66,6 @@ window.addEventListener("load", () => {
         var errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
-
-        // if (errorCode === 'auth/email-already-in-use') {
-        //   let textError = getElementById('errores').style.display = block;
-        //   textError.innerHTML = 'El correo esta en uso por otra cuenta';
-        // } else if (errorCode === 'auth/weak-password') { 
-        //   let textError = getElementById('errores').style.display = block;
-        //   textError.innerHTML = 'La contraseña debe tener minimo 6 caracteres';
-        // };
-
       });
     });
 
@@ -94,7 +86,8 @@ window.addEventListener("load", () => {
     });
 
 
-    document.getElementById("close1").addEventListener('click', () => {
+    document.getElementById("close1").addEventListener('click', (e) => {
+      e.preventDefault();
       firebase.auth().signOut()
         .then(function () {
           // Sign-out successful.
@@ -124,49 +117,4 @@ window.addEventListener("load", () => {
 
   });//Fin del load del window
 
-
-  //  guardando informacion del usuario al momento de darle click al boton registrar
-  // function saveUserData() {
-  //   let correo = document.getElementById('email').value;
-  //   let name = document.getElementById('name').value;
-  //   let nick = document.getElementById('nickname').value;
-  //   let date = document.getElementById('date').value;
-  //   let yearAct = 2019;
-  //   let age = (yearAct - date);
-
-  // Initialize Cloud Firestore through Firebase
-  //   var db = firebase.firestore();
-  //   db.collection("users").add({
-  //     email: correo,
-  //     name: name,
-  //     nickname: nick,
-  //     birthdate: date,
-  //     age: age
-  //   })
-  //     .then(function (docRef) {
-  //       console.log("Document written with ID: ", docRef.id);
-  //     })
-  //     .catch(function (error) {
-  //       console.error("Error adding document: ", error);
-  //     });
-  // };
-
-
-
-
-  // const posts = document.querySelector('posts');
-  // //setup posts
-  // const setupPosts = (data) => {
-  //     let html = '';
-  //     data.forEach(doc => {
-  //         const post = doc.data();
-  //         const li = `
-  //         <li>
-  //             <div class = 'collabsible post'>${post.content}</div>
-  //         </li>
-  //         `;
-  //         html += li
-  //     })
-  // }
-  //
 })
