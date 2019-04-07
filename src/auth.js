@@ -28,7 +28,7 @@ signupForm.addEventListener('submit', (e) => {
             }).then(function () {
                 console.log('usuario creado');
                 signupForm.reset();
-                
+
             }).catch(function (error) {
                 console.log(error.code);
                 console.log(error.message);
@@ -54,33 +54,19 @@ loginForm.addEventListener('submit', (e) => {
     const email = loginForm['login-email'].value;
     const password = loginForm['login-password'].value;
 
-    // //signup
-    // const signupForm = document.querySelector('#signup-form');
-    // signupForm.addEventListener('submit', (e) => {
-    //     e.preventDefault();
-    //     //get user info
-    //     const email = signupForm['signup-email'].value;
-    //     const password = signupForm['signup-password'].value;
+    auth.signInWithEmailAndPassword(email, password).then(function () {
+        console.log('sesion iniciada');
+    }).catch(function (error) {
+        // Handle Errors here
+        console.log(error.code);
+        console.log(error.message);
+    });
 
-    //     //signup user
-    //     auth.createUserWithEmailAndPassword(email, password).then(cred => {
-    //         signupForm.reset();
-    //     })
-    // })
-
-    // //logout
-    // const logout = document.querySelector('#logout');
-    // logout.addEventListener('click', (e) => {
-    //     e.preventDefault();
-    //     auth.signOut()
-    // })
-
-    user.updateProfile({
-        displayName: nickname
-    }).then(cred => {
-        updateForm.reset();
-    })
-        .then(console.log(user))
+    // user.updateProfile({
+    //     displayName: nickname
+    // }).then(cred => {
+    //     updateForm.reset();
+    // }).then(console.log(user))
 })
 
 
