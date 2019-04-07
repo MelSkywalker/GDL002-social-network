@@ -1,4 +1,4 @@
-// Initialize Firebase
+// // Initialize Firebase
 // var config = {
 //   apiKey: "AIzaSyAA0MVHLupaDUBwvctequpz-8aDt9JNpb4",
 //   authDomain: "checkpoint-2ea0e.firebaseapp.com",
@@ -19,3 +19,5 @@ var config = {
   messagingSenderId: "63565909344"
 };
 firebase.initializeApp(config);
+const auth = firebase.auth();
+const db = firebase.firestore();

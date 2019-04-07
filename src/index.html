@@ -18,14 +18,14 @@
       src="https://drive.google.com/uc?export=view&id=1qZHg6D3qFRG7D16LuBLyIx2uvb6sHvgY">
     <div class="modal-content">
       <h2>Sign up</h2>
-      <form id="signup-form">
+      <form id="signup-form" autocomplete="off">
         <div class="input-field">
           <label for="signup-name">Nombre</label>
           <input type="text" id="signup-name">
           <label for="signup-nickname">Nickname</label>
           <input type="text" id="signup-nickname" required>
           <label for="signup-bd">Año de nacimiento</label>
-          <input type="text" id="signup-bd" required>
+          <input type="date" id="signup-bd" required>
         </div>
         <div class="input-field">
           <label for="signup-email">E-mail</label>
@@ -85,6 +85,7 @@
         </li>
       </ul>
     </div>
+  </nav>
 
     <!-- Profile -->
     <div id="modal-profile" class="modal">
@@ -133,10 +134,10 @@
     <button class="like likeBtn" id="gameOverBtn"><img class="imgBtn" alt="gameOverBtn"
         src="https://drive.google.com/uc?export=view&id=13S3-ICqv2NZk_0xgqbYYXDskUCjAPday"></button>
 
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-firestore.js"></script>
-    <script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script>
+    <!-- <script>
       // Initialize Firebase
       var config = {
         apiKey: "AIzaSyAA0MVHLupaDUBwvctequpz-8aDt9JNpb4",
@@ -149,10 +150,12 @@
       firebase.initializeApp(config);
       const auth = firebase.auth();
       const db = firebase.firestore();
-    </script>
-    <script src="main.js"></script>
-    <script src="posts.js"></script>
+    </script> -->
+    <!-- <script src="main.js"></script> -->
+    <script src="firebase.js"></script>
     <script src="auth.js"></script>
+    <script src="posts.js"></script>
+    
 </body>
 
 </html>

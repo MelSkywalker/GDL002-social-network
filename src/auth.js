@@ -1,3 +1,5 @@
+'use strict'
+
 //listen for auth status changes
 auth.onAuthStateChanged(user => {
     if (user) {
@@ -18,28 +20,18 @@ signupForm.addEventListener('submit', (e) => {
     const verifiedPassword = signupForm['verified-password'].value;
 
     if (email === verifiedEmail && password === verifiedPassword) {
-        auth.createUserWithEmailAndPassword(email, password).then(cred => {
-            db.collection('users').doc(cred.user.uid).set({
+        auth.createUserWithEmailAndPassword(email, password).then(auth => {
+            db.collection('users').doc(auth.user.uid).set({
                 name: signupForm['signup-name'].value,
                 nickname: signupForm['signup-nickname'].value,
                 bd: signupForm['signup-bd'].value
             }).then(function () {
                 console.log('usuario creado');
-            }).then(post => {
-                db.collection('users').doc(cred.user.uid).collection('posts').add({
-                    post: 'holi',
-                    likes: 0,
-                    date: new Date().toJSON()
-                }).then(signupForm.reset())
-                .catch(function (error1) {
-                    console.log(error1);2
-                })
-            }).then(auth.signOut())
-            .catch(function(error){
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode);
-                console.log(errorMessage);                
+                signupForm.reset();
+                
+            }).catch(function (error) {
+                console.log(error.code);
+                console.log(error.message);
             })
         })
     } else {
@@ -62,41 +54,27 @@ loginForm.addEventListener('submit', (e) => {
     const email = loginForm['login-email'].value;
     const password = loginForm['login-password'].value;
 
-// //signup
-// const signupForm = document.querySelector('#signup-form');
-// signupForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     //get user info
-//     const email = signupForm['signup-email'].value;
-//     const password = signupForm['signup-password'].value;
+    // //signup
+    // const signupForm = document.querySelector('#signup-form');
+    // signupForm.addEventListener('submit', (e) => {
+    //     e.preventDefault();
+    //     //get user info
+    //     const email = signupForm['signup-email'].value;
+    //     const password = signupForm['signup-password'].value;
 
-//     //signup user
-//     auth.createUserWithEmailAndPassword(email, password).then(cred => {
-//         signupForm.reset();
-//     })
-// })
+    //     //signup user
+    //     auth.createUserWithEmailAndPassword(email, password).then(cred => {
+    //         signupForm.reset();
+    //     })
+    // })
 
-// //logout
-// const logout = document.querySelector('#logout');
-// logout.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     auth.signOut()
-// })
+    // //logout
+    // const logout = document.querySelector('#logout');
+    // logout.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     auth.signOut()
+    // })
 
-<<<<<<< HEAD
-// //login
-// const loginForm = document.querySelector('#login-form');
-// loginForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     //get user info
-//     const email = loginForm['login-email'].value;
-//     const password = loginForm['login-password'].value;
-
-//     auth.signInWithEmailAndPassword(email, password).then(cred => {
-//         loginForm.reset();
-//     })
-// })
-=======
     user.updateProfile({
         displayName: nickname
     }).then(cred => {
@@ -104,4 +82,5 @@ loginForm.addEventListener('submit', (e) => {
     })
         .then(console.log(user))
 })
->>>>>>> e5dc424c3d76fa248af54325386dc7043f0b01f1
+
+
