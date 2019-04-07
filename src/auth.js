@@ -1,11 +1,4 @@
-//listen for auth status changes
-auth.onAuthStateChanged(user => {
-    if (user) {
-        console.log('user logged in', user.uid);
-    } else {
-        console.log('user logged out');
-    }
-})
+'use strict'
 
 //signup
 const signupForm = document.querySelector('#signup-form');
@@ -18,28 +11,18 @@ signupForm.addEventListener('submit', (e) => {
     const verifiedPassword = signupForm['verified-password'].value;
 
     if (email === verifiedEmail && password === verifiedPassword) {
-        auth.createUserWithEmailAndPassword(email, password).then(cred => {
-            db.collection('users').doc(cred.user.uid).set({
+        auth.createUserWithEmailAndPassword(email, password).then(auth => {
+            db.collection('users').doc(auth.user.uid).set({
                 name: signupForm['signup-name'].value,
                 nickname: signupForm['signup-nickname'].value,
                 bd: signupForm['signup-bd'].value
             }).then(function () {
                 console.log('usuario creado');
-            }).then(post => {
-                db.collection('users').doc(cred.user.uid).collection('posts').add({
-                    post: 'holi',
-                    likes: 0,
-                    date: new Date().toJSON()
-                }).then(signupForm.reset())
-                .catch(function (error1) {
-                    console.log(error1);2
-                })
-            }).then(auth.signOut())
-            .catch(function(error){
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode);
-                console.log(errorMessage);                
+                signupForm.reset();
+                
+            }).catch(function (error) {
+                console.log(error.code);
+                console.log(error.message);
             })
         })
     } else {
@@ -51,7 +34,8 @@ signupForm.addEventListener('submit', (e) => {
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
     e.preventDefault();
-    auth.signOut()
+    auth.signOut();
+    document.querySelector('#postsList').style.display = 'none';
 })
 
 //login
@@ -63,21 +47,17 @@ loginForm.addEventListener('submit', (e) => {
     const password = loginForm['login-password'].value;
 
     auth.signInWithEmailAndPassword(email, password)
-        .then(cred => {
-            loginForm.reset();
-        })
-})
-
-//update nickname
-const updateForm = document.querySelector('#account-details');
-updateForm.addEventListener('submit', (e) => {
-    const nickname = document.querySelector('#update-nickname').value;
-    const user = firebase.auth().currentUser;
-
-    user.updateProfile({
+        .then(function () {
+            console.log('sesion iniciada');
+        }).catch(function (error) {
+            console.log(error.code);
+            console.log(error.message);
+        });
+    
+    /*user.updateProfile({
         displayName: nickname
     }).then(cred => {
         updateForm.reset();
     })
-        .then(console.log(user))
+        .then(console.log(user))*/
 })
