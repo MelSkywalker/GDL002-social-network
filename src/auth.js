@@ -1,14 +1,5 @@
 'use strict'
 
-//listen for auth status changes
-auth.onAuthStateChanged(user => {
-    if (user) {
-        console.log('user logged in', user.uid);
-    } else {
-        console.log('user logged out');
-    }
-})
-
 //signup
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
@@ -28,7 +19,7 @@ signupForm.addEventListener('submit', (e) => {
             }).then(function () {
                 console.log('usuario creado');
                 signupForm.reset();
-
+                
             }).catch(function (error) {
                 console.log(error.code);
                 console.log(error.message);
@@ -43,7 +34,8 @@ signupForm.addEventListener('submit', (e) => {
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
     e.preventDefault();
-    auth.signOut()
+    auth.signOut();
+    document.querySelector('#postsList').style.display = 'none';
 })
 
 //login
@@ -54,19 +46,18 @@ loginForm.addEventListener('submit', (e) => {
     const email = loginForm['login-email'].value;
     const password = loginForm['login-password'].value;
 
-    auth.signInWithEmailAndPassword(email, password).then(function () {
-        console.log('sesion iniciada');
-    }).catch(function (error) {
-        // Handle Errors here
-        console.log(error.code);
-        console.log(error.message);
-    });
-
-    // user.updateProfile({
-    //     displayName: nickname
-    // }).then(cred => {
-    //     updateForm.reset();
-    // }).then(console.log(user))
+    auth.signInWithEmailAndPassword(email, password)
+        .then(function () {
+            console.log('sesion iniciada');
+        }).catch(function (error) {
+            console.log(error.code);
+            console.log(error.message);
+        });
+    
+    /*user.updateProfile({
+        displayName: nickname
+    }).then(cred => {
+        updateForm.reset();
+    })
+        .then(console.log(user))*/
 })
-
-
