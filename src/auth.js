@@ -1,26 +1,7 @@
-// firebase.auth().createUser({
-//     email: "blah123@mel.com",
-//     emailVerified: false,
-//     password: "blach123",
-//     displayName: "Equis Nombre",
-//     photoUrl: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
-// })
-// .then(function(userRecord){
-//     console.log("nuevo usario creado:", userRecord.uid);
-// })
-// .catch(function(error){
-//     console.log("error creando usuario");
-// })
-
-// //get data
-// db.collection('posts').get().then(snapshot => {
-//     setupPosts(snapshot.docs)
-// })
-
 //listen for auth status changes
 auth.onAuthStateChanged(user => {
     if (user) {
-        console.log('user logged in', user);
+        console.log('user logged in', user.uid);
     } else {
         console.log('user logged out');
     }
@@ -37,13 +18,32 @@ signupForm.addEventListener('submit', (e) => {
     const verifiedPassword = signupForm['verified-password'].value;
 
     if (email === verifiedEmail && password === verifiedPassword) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .then(cred => {
-                signupForm.reset();
+        auth.createUserWithEmailAndPassword(email, password).then(cred => {
+            db.collection('users').doc(cred.user.uid).set({
+                name: signupForm['signup-name'].value,
+                nickname: signupForm['signup-nickname'].value,
+                bd: signupForm['signup-bd'].value
+            }).then(function () {
+                console.log('usuario creado');
+            }).then(post => {
+                db.collection('users').doc(cred.user.uid).collection('posts').add({
+                    post: 'holi',
+                    likes: 0,
+                    date: new Date().toJSON()
+                }).then(signupForm.reset())
+                .catch(function (error1) {
+                    console.log(error1);2
+                })
+            }).then(auth.signOut())
+            .catch(function(error){
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);                
             })
-
+        })
     } else {
-        alert("Por favor revisa tus datos y vuelve a intentarlo.")
+        alert('Por favor revisa tus datos y vuelve a intentarlo.')
     }
 })
 
@@ -79,5 +79,5 @@ updateForm.addEventListener('submit', (e) => {
     }).then(cred => {
         updateForm.reset();
     })
-    .then(console.log(user))
+        .then(console.log(user))
 })
