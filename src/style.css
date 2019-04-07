@@ -1,23 +1,79 @@
-/* .page {
-    display: none;
-    width: 100%;
-    min-height: 100%;
-    position: fixed;
-    padding: 1 rem 2 rem;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 20px; /* 1rem will equal this now */
+  line-height: 1.6;
+  font-family: sans-serif; /* add google fonts */
 }
 
+body {
+  background: url("https://drive.google.com/uc?export=view&id=13MdevlT6snYhCvoHxRcWdBnw_ebfijg4") center fixed repeat; /*log in background*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin-left: 2rem;
+}
+
+/* General atributes for each page class */
+.page {
+  display: none;
+  width: 100%;
+  min-height: 100%; /*Allow for the content offthe bottom of the page*/
+  position: fixed; /*Or absolute ifthe user needs to scrollfor more content*/
+  padding: 1rem 2rem;
+}
 .active {
-    display: block;
-} */
-
-/* #ifNewUserRegister {
-    background-color: aquamarine;
+  display: block;
 }
 
-#ifAcountLogIn {
-    background-color: rgb(226, 198, 0.781);
+.newsfeed {
+  background: url("https://drive.google.com/uc?export=view&id=1xxxukjZMWNKJsZj2rAAjBjGuIOwVReWG") center fixed repeat; /*newsfeed background*/
 }
 
-#wallContent {
-    background-color: rgb(13, 204, 252);
+/* .modal {
+  margin-left: 2rem;
 } */
+
+a {
+  text-decoration: none; /*Eliminates de link underline*/
+  color: #000;
+}
+
+.blackBtn {
+  background-color: #000;
+  border: none;
+  border-radius: 0.3rem;
+  color: #fff;
+  padding: 0.5rem;
+  margin: 0.3rem;
+}
+
+.logo {
+  margin: 1rem;
+}
+
+.like:hover {
+
+}
+
+a img:last-child {
+  display: none;
+}
+a:hover img:last-child {
+  display: block;
+}
+a:hover img:first-child {
+  display: none;
+}
+/* https://drive.google.com/uc?export=view&id=1p79-A_uABKO4CS9Rl_pd1ccLYOdmtcCg  /*hover game over*/ */
+
+/* https://drive.google.com/uc?export=view&id=1TTIiJuok5go9FRYAGR6i_gz3K1_0OMQ3  /*hover love it*/ */
+
+/* https://drive.google.com/uc?export=view&id=19mr6Gje0LsrTXpFv7ibOFKj3_POMe34G  /*hover level up*/ */
