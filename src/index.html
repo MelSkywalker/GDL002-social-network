@@ -26,7 +26,7 @@
         <label for="password">Ingresa una contraseña</label>
         <input id="password" required type="password" placeholder="Ingresa contraseña"><br />
         <button id="send">Registrar</button>
-        <a href="#ifAcountLogIn">Ya tengo una cuenta</a>
+        <a href="#ifAcountLogIn" id="linkForLog" class="nav-link">Ya tengo una cuenta</a>
       </form>
 
       <!-- <div id="errores" style="display:none;">
@@ -40,11 +40,11 @@
         <input id="emailLog" type="email" placeholder="Ingresa e-mail/correo">
         <input id="passwordLog" type="password" placeholder="Ingresa contraseña">
         <a href="#wallContent"><button id="logIn">Entrar</button></a>
-        <a href="#ifNewUserRegister">Aún no tengo cuenta</a>
+        <a href="#ifNewUserRegister" id="linkForRegister" class="nav-link">Aún no tengo cuenta</a>
       </form>
     </section>
-    <section id="wallContent" class="page">
-      <div id="content" style="display:none">
+    <section id="wallContent" class="page" style="display:none;">
+      <div id="content">
         <h2>Bienvenido</h2>
         <button id="close1">Cerrar sesión</button>
         <div class='postsContainer'>
@@ -57,19 +57,7 @@
       </div>
     </section>
 
-    <section id="wallContent" class="page">
-      <div id="content" style="display:none">
-        <h2>Bienvenido</h2>
-        <button id="close1">Cerrar sesión</button>
-        <div class='postsContainer'>
-          <form id="addPost">
-            <input type="text" name="post" placeholder="¿Qué quieres compartir?">
-            <button>Publicar</button>
-          </form>
-          <ul id="postList"></ul>
-        </div>
-      </div>
-    </section>
+    
 
   </main>
 

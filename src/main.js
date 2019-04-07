@@ -88,29 +88,28 @@ window.addEventListener("load", () => {
 
     document.getElementById("close1").addEventListener('click', (e) => {
       e.preventDefault();
-      firebase.auth().signOut()
-        .then(function () {
-          // Sign-out successful.
-          console.log('Saliendo...')
-          document.getElementById('content').style.display = 'none';
-        })
-        .catch(function (error) {
-          // An error happened.
-        });
+      firebase.auth().signOut().then(function () {
+        // Sign-out successful.
+        console.log('Saliendo...')
+        document.getElementById('content').style.display = 'none';
+      }).catch(function (error) {
+        // An error happened.
+      });
     });
 
     function verify() {
       var user = firebase.auth().currentUser;
+      user.updateProfile({
+        displayName: document.getElementById('name').value,
+      });
 
-      user.sendEmailVerification()
-        .then(function () {
+      user.sendEmailVerification().then(function () {
           // Email sent.
           console.log('Enviando correo...');
           alert('email enviado');
           firebase.auth().signOut();
           document.getElementById('formRegister').reset();
-        })
-        .catch(function (error) {
+        }).catch(function (error) {
           // An error happened.
         });
     };
