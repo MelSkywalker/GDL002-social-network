@@ -10,22 +10,88 @@
 </head>
 
 <body>
+  <img class="logo" alt="Checkpoint_logo.png"
+    src="https://drive.google.com/uc?export=view&id=1qZHg6D3qFRG7D16LuBLyIx2uvb6sHvgY">
 
+  <!-- Login modal -->
+  <section id="modal-login" class="modal">
+    <div class="modal-content">
+      <h2>Log In</h2>
+      <form id="login-form">
+        <div class="input-field">
+          <label for="login-email">E-mail</label>
+          <input type="email" id="login-email" required>
+        </div>
+        <div class="login-field">
+          <label for="login-password">Contraseña</label>
+          <input type="password" id="login-password" required>
+        </div>
+        <input class="blackBtn enterBtn" type="submit" value="Inciar sesión">
+        <p>¿Aún no tienes cuenta?</p>
+        <a href="#modal-sign-up" id="linkRegister">Regístrate</a>
+      </form>
+    </div>
+  </section>
+
+  <!-- Navigation bar -->
+  <section id="modal-navbar" class="topnav page">
+    <div>
+      <a href="#newsfeed" id="linkNewsFeed">Muro</a>
+      <a href="#modal-profile" id="linkProfile">Perfil</a>
+      <a href="#modal-account" id="linkAccount">Cuenta</a>
+      <a href="#" id="logout">Cerrar sesión</a>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <section id="modal-profile" class="page">
+    <div>
+      <h2>¡Hola!</h2>
+      <span id="profile-nickname"></span>
+    </div>
+    <figure id="profile-pic"></figure>
+  </section>
+
+  <!-- Newsfeed -->
+  <section id="modal-wallpost" class="page">
+    <form id='addPost'>
+      <input type="text" name="post" placeholder="¿Qué quieres compartir?">
+    </input>
+      <button>Publicar</button>
+    </form>
+    <ul id="postsList"></ul>
+  </section>
+
+  <!-- Modal account -->
+  <section id="modal-account" class="modal page">
+    <div class="modal-content">
+      <h2>Actualizar cuenta</h2>
+      <form id="account-details">
+        <div class="input-field">
+          <label for="update-name">Name: </label>
+          <input type="text" id="update-name">
+        </div>
+        <div class="input-field">
+          <label for="update-nickname">Nickname: </label>
+          <input type="text" id="update-nickname">
+        </div>
+        <input type="submit" value="Guardar">
+      </form>
+    </div>
+  </section>
 
   <!-- Sign up modal -->
-  <div id="modal-sign-up" class="modal">
-    <img class="logo singup-logo" alt="Checkpoint_logo.png"
-      src="https://drive.google.com/uc?export=view&id=1qZHg6D3qFRG7D16LuBLyIx2uvb6sHvgY">
+  <section id="modal-sign-up" class="modal page">
     <div class="modal-content">
       <h2>Sign up</h2>
-      <form id="signup-form">
+      <form id="signup-form" autocomplete="off">
         <div class="input-field">
           <label for="signup-name">Nombre</label>
           <input type="text" id="signup-name">
           <label for="signup-nickname">Nickname</label>
           <input type="text" id="signup-nickname" required>
           <label for="signup-bd">Año de nacimiento</label>
-          <input type="text" id="signup-bd" required>
+          <input type="date" id="signup-bd" required>
         </div>
         <div class="input-field">
           <label for="signup-email">E-mail</label>
@@ -41,118 +107,30 @@
         </div>
         <input class="blackBtn enterBtn" type="submit" value="Registrar">
       </form>
+      <p>Ya tengo una cuenta</p>
+      <a href="#modal-login" id="linkLogin">Inicar Sesion</a>
     </div>
-  </div>
+  </section>
 
-  <!-- Login modal -->
-  <div id="modal-login" class="modal">
-    <img class="logo login-logo" alt="Checkpoint_logo.png"
-      src="https://drive.google.com/uc?export=view&id=1qZHg6D3qFRG7D16LuBLyIx2uvb6sHvgY">
-    <div class="modal-content">
-      <h2>Log In</h2>
-      <form id="login-form">
-        <div class="input-field">
-          <label for="login-email">E-mail</label>
-          <input type="email" id="login-email" required>
-        </div>
-        <div class="login-field">
-          <label for="login-password">Contraseña</label>
-          <input type="password" id="login-password" required>
-        </div>
-        <input class="blackBtn enterBtn" type="submit" value="Inciar sesión">
-      </form>
-    </div>
-  </div>
-
-  <!-- Navigation bar -->
-  <nav>
-    <div class="nav-wrapper-container">
-      <ul id="nav-mobile">
-        <!-- navigation logo -->
-        <li><img class="logo nav-logo" alt="Check-point_logo.png"
-            src="https://drive.google.com/uc?export=view&id=1p79-A_uABKO4CS9Rl_pd1ccLYOdmtcCg"></li>
-        <li class="logged-in">
-          <a href="#" data-target="modal-account">Perfil</a>
-        </li>
-        <li class="logged-in">
-          <a href="#" data-target="newsfeed">Inicio</a>
-        </li>
-        <li class="logged-in">
-          <a href="#" data-target="modal-account">Cuenta</a>
-        </li>
-        <li class="logged-in">
-          <a href="#" id="logout">Cerrar sesión</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Profile -->
-    <div id="modal-profile" class="modal">
-      <section>
-        <h2>¡Hola </h2>
-        <span id="profile-nickname"></span>
-      </section>
-      <figure id="profile-pic"></figure>
-    </div>
-
-    <!-- Newsfeed -->
-    <div class="container">
-      <form id='addPost'>
-        <input type="text" name="post" placeholder="¿Qué quieres compartir?">
-        <button>Publicar</button>
-      </form>
-      <ul id="postsList"></ul>
-    </div>
-
-    <!-- Modal account -->
-    <div id="modal-account" class="modal">
-      <div class="modal-content">
-        <h2>Actualizar cuenta</h2>
-        <form id="account-details">
-          <div class="input-field">
-            <label for="update-name">Name: </label>
-            <input type="text" id="update-name">
-          </div>
-          <div class="input-field">
-            <label for="update-nickname">Nickname: </label>
-            <input type="text" id="update-nickname">
-          </div>
-          <div>
-            <label for="update-pic">Foto de perfil:</label>
-          </div>
-          <input type="submit" value="Guardar">
-        </form>
-      </div>
-    </div>
-
-    <!-- Botones para like -->
+  <!-- Botones para like 
     <button class="like likeBtn" id="loveItBtn"><img class="imgBtn" alt="loveItBtn"
         src="https://drive.google.com/uc?export=view&id=1URPQIxmr9NDjhTLkBDPNcEidLJ1eYzeQ"></button>
     <button class="like likeBtn" id="lvlUpBtn"><img class="imgBtn" alt="lvlUpBtn"
         src="https://drive.google.com/uc?export=view&id=1TjbIbQmgxoy15DSwcvq-NKL-Jh4zw_aR"></button>
     <button class="like likeBtn" id="gameOverBtn"><img class="imgBtn" alt="gameOverBtn"
         src="https://drive.google.com/uc?export=view&id=13S3-ICqv2NZk_0xgqbYYXDskUCjAPday"></button>
+    -->
 
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-firestore.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyAA0MVHLupaDUBwvctequpz-8aDt9JNpb4",
-        authDomain: "checkpoint-2ea0e.firebaseapp.com",
-        databaseURL: "https://checkpoint-2ea0e.firebaseio.com",
-        projectId: "checkpoint-2ea0e",
-        storageBucket: "checkpoint-2ea0e.appspot.com",
-        messagingSenderId: "32985801835"
-      };
-      firebase.initializeApp(config);
-      const auth = firebase.auth();
-      const db = firebase.firestore();
-    </script>
-    <script src="main.js"></script>
-    <script src="posts.js"></script>
-    <script src="auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script>
+  <script src="firebase.js"></script>
+  <script src="auth.js"></script>
+  <script src="spa.js"></script>
+  <script src="posts.js"></script>
+  <script src="profile.js"></script>
+  <script src="account.js"></script>
+
 </body>
 
 </html>

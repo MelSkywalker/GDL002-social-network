@@ -5,7 +5,7 @@ const form = document.querySelector('#addPost');
 
 const renderPost = (doc) => {
     let li = document.createElement('li');
-    let namePost = document.createElement('span');
+    //let namePost = document.createElement('span');
     let datePost = document.createElement('span');
     let post = document.createElement('span');
     let deletePost = document.createElement('button');
@@ -44,7 +44,11 @@ const renderPost = (doc) => {
     }
     const formattedDate = hour + ':' + getMinutesF() + 'hrs' + ' - ' + getDay() + '/' + getMonthF() + '/' + year + ' ';
 
-    namePost.textContent = name;
+    //const name =  db.collection('users').doc(auth.currentUser.uid).nickname;
+    //console.log('nickname ' +name);
+    
+
+    //namePost.textContent = name;
     datePost.textContent = formattedDate;
     post.textContent = doc.data().post;
     nLikes.textContent = doc.data().likes;
@@ -52,7 +56,7 @@ const renderPost = (doc) => {
     updatePost.textContent = 'Editar';
     likePost.textContent = 'Likes';
     
-    li.appendChild(namePost);
+    //li.appendChild(namePost);
     li.appendChild(datePost);
     li.appendChild(post);
     li.appendChild(updatePost);
@@ -63,6 +67,7 @@ const renderPost = (doc) => {
 
     //delete post
     deletePost.addEventListener('click', (e) => {
+        e.stopPropagation();
         let id = e.target.parentElement.getAttribute('data-id');
         db.collection('users').doc(auth.currentUser.uid).collection('posts').doc(id).delete();
     })
@@ -124,12 +129,9 @@ auth.onAuthStateChanged(user => {
                 } else if (change.type === 'removed') {
                     let li = postList.querySelector('[data-id=' + change.doc.id + ']');
                     postList.removeChild(li);
-                    renderPost(change.doc);
                 } else if (change.type === 'modified') {
                     let li = postList.querySelector('[data-id=' + change.doc.id + ']');
                     postList.removeChild(li);
-                    renderPost(change.doc);
-                } else {
                     renderPost(change.doc);
                 }
             })
