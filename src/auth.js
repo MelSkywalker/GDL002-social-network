@@ -24,7 +24,7 @@ signupForm.addEventListener('submit', (e) => {
                 nickname: signupForm['signup-nickname'].value,
                 bd: signupForm['signup-bd'].value
             }).then(function () {
-                console.log('usuario creado');
+                console.log('3 creado');
             }).then(post => {
                 db.collection('users').doc(cred.user.uid).collection('posts').add({
                     post: 'holi',
