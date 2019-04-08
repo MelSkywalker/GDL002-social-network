@@ -72,10 +72,9 @@ window.addEventListener("load", () => {
     document.getElementById('logIn').addEventListener('click', (e) => {
       e.preventDefault();
       console.log('diste un click');
-      let correoLog = document.getElementById('emailLog').value;
+      let emailLog = document.getElementById('emailLog').value;
       let passwordLog = document.getElementById('passwordLog').value;
-
-      firebase.auth().signInWithEmailAndPassword(correoLog, passwordLog)
+      firebase.auth().signInWithEmailAndPassword(emailLog, passwordLog)
         .catch(function (error) {
           // Handle Errors here.
           var errorCode = error.code;
@@ -86,8 +85,8 @@ window.addEventListener("load", () => {
     });
 
 
-    document.getElementById("close1").addEventListener('click', (e) => {
-      e.preventDefault();
+    document.getElementById("close1").addEventListener('click', () => {
+      // e.preventDefault();
       firebase.auth().signOut()
         .then(function () {
           // Sign-out successful.
